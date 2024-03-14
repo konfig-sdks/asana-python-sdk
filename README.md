@@ -1,10 +1,10 @@
-<div align="center">
+<div align="left">
 
 [![Visit Asana](./header.png)](https://asana.com)
 
 # Asana<a id="asana"></a>
 
-This is the interface for interacting with the [Asana Platform](https://developers.asana.com). Our API reference is generated from our [OpenAPI spec] (https://raw.githubusercontent.com/Asana/openapi/master/defs/asana_oas.yaml).
+This is the interface for interacting with the [Asana Platform](https://developers.asana.com). Our API reference is generated from our [OpenAPI spec](https://raw.githubusercontent.com/Asana/openapi/master/defs/asana_oas.yaml).
 
 
 </div>
@@ -571,15 +571,15 @@ The file you want to upload.  *Note when using curl:*  Be sure to add an `‘@�
 
 Retrieve the audit log events that have been captured in your domain.
 
-This endpoint will return a list of [AuditLogEvent](https://raw.githubusercontent.com) objects, sorted by creation time in ascending order. Note that the Audit Log API captures events from October 8th, 2021 and later. Queries for events before this date will not return results.
+This endpoint will return a list of [AuditLogEvent](https://developers.asana.com/reference/rest-api-reference) objects, sorted by creation time in ascending order. Note that the Audit Log API captures events from October 8th, 2021 and later. Queries for events before this date will not return results.
 
-There are a number of query parameters (below) that can be used to filter the set of [AuditLogEvent](https://raw.githubusercontent.com) objects that are returned in the response. Any combination of query parameters is valid. When no filters are provided, all of the events that have been captured in your domain will match.
+There are a number of query parameters (below) that can be used to filter the set of [AuditLogEvent](https://developers.asana.com/reference/rest-api-reference) objects that are returned in the response. Any combination of query parameters is valid. When no filters are provided, all of the events that have been captured in your domain will match.
 
-The list of events will always be [paginated](https://raw.githubusercontent.com). The default limit is 1000 events. The next set of events can be retrieved using the `offset` from the previous response. If there are no events that match the provided filters in your domain, the endpoint will return `null` for the `next_page` field. Querying again with the same filters may return new events if they were captured after the last request. Once a response includes a `next_page` with an `offset`, subsequent requests can be made with the latest `offset` to poll for new events that match the provided filters.
+The list of events will always be [paginated](https://developers.asana.com/reference/rest-api-reference). The default limit is 1000 events. The next set of events can be retrieved using the `offset` from the previous response. If there are no events that match the provided filters in your domain, the endpoint will return `null` for the `next_page` field. Querying again with the same filters may return new events if they were captured after the last request. Once a response includes a `next_page` with an `offset`, subsequent requests can be made with the latest `offset` to poll for new events that match the provided filters.
 
 *Note: If the filters you provided match events in your domain and `next_page` is present in the response, we will continue to send `next_page` on subsequent requests even when there are no more events that match the filters. This was put in place so that you can implement an audit log stream that will return future events that match these filters. If you are not interested in future events that match the filters you have defined, you can rely on checking empty `data` response for the end of current events that match your filters.*
 
-When no `offset` is provided, the response will begin with the oldest events that match the provided filters. It is important to note that [AuditLogEvent](https://raw.githubusercontent.com) objects will be permanently deleted from our systems after 90 days. If you wish to keep a permanent record of these events, we recommend using a SIEM tool to ingest and store these logs.
+When no `offset` is provided, the response will begin with the oldest events that match the provided filters. It is important to note that [AuditLogEvent](https://developers.asana.com/reference/rest-api-reference) objects will be permanently deleted from our systems after 90 days. If you wish to keep a permanent record of these events, we recommend using a SIEM tool to ingest and store these logs.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -3617,9 +3617,9 @@ This endpoint returns a compact resource, which excludes some properties by defa
 
 Creates and returns a job that will asynchronously handle the project instantiation.
 
-To form this request, it is recommended to first make a request to [get a project template](https://raw.githubusercontent.com). Then, from the response, copy the `gid` from the object in the `requested_dates` array. This `gid` should be used in `requested_dates` to instantiate a project.
+To form this request, it is recommended to first make a request to [get a project template](https://developers.asana.com/reference/rest-api-reference). Then, from the response, copy the `gid` from the object in the `requested_dates` array. This `gid` should be used in `requested_dates` to instantiate a project.
 
-_Note: The body of this request will differ if your workspace is an organization. To determine if your workspace is an organization, use the [is_organization](https://raw.githubusercontent.com) parameter._
+_Note: The body of this request will differ if your workspace is an organization. To determine if your workspace is an organization, use the [is_organization](https://developers.asana.com/reference/rest-api-reference) parameter._
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -4146,7 +4146,7 @@ duplicate_project_job_response = asana.projects.duplicate_project_job(
     data={
         "name": "New Project Name",
         "team": "12345",
-        "include": "[members,notes,forms,task_notes,task_assignee,task_subtasks,task_attachments,task_dates,task_dependencies,task_followers,task_tags,task_projects]",
+        "include": "[allocations,members,notes,forms,task_notes,task_assignee,task_subtasks,task_attachments,task_dates,task_dependencies,task_followers,task_tags,task_projects]",
     },
     opt_pretty=True,
     opt_fields=["new_project", "new_project.name", "new_project_template", "new_project_template.name", "new_task", "new_task.created_by", "new_task.name", "new_task.resource_subtype", "new_task_template", "new_task_template.name", "resource_subtype", "status"],
@@ -4285,9 +4285,9 @@ This endpoint returns a compact resource, which excludes some properties by defa
 
 ### `asana.projects.get_task_counts`<a id="asanaprojectsget_task_counts"></a>
 
-Get an object that holds task count fields. **All fields are excluded by default**. You must [opt in](https://raw.githubusercontent.com) using `opt_fields` to get any information from this endpoint.
+Get an object that holds task count fields. **All fields are excluded by default**. You must [opt in](https://developers.asana.com/reference/rest-api-reference) using `opt_fields` to get any information from this endpoint.
 
-This endpoint has an additional [rate limit](https://raw.githubusercontent.com) and each field counts especially high against our [cost limits](/docs/rate-limits#cost-limits).
+This endpoint has an additional [rate limit](https://developers.asana.com/reference/rest-api-reference) and each field counts especially high against our [cost limits](/docs/rate-limits#cost-limits).
 
 Milestones are just tasks, so they are included in the `num_tasks`, `num_incomplete_tasks`, and `num_completed_tasks` counts.
 
@@ -4701,7 +4701,7 @@ The updated fields for the project.
 
 ### `asana.rules.trigger_rule_request`<a id="asanarulestrigger_rule_request"></a>
 
-Trigger a rule which uses an ["incoming web request"](https://raw.githubusercontent.com) trigger.
+Trigger a rule which uses an ["incoming web request"](https://developers.asana.com/reference/rest-api-reference) trigger.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -6557,7 +6557,7 @@ This endpoint returns a compact resource, which excludes some properties by defa
 
 Returns the compact task records for some filtered set of tasks. Use one or more of the parameters provided to filter the tasks returned. You must specify a `project` or `tag` if you do not specify `assignee` and `workspace`.
 
-For more complex task retrieval, use [workspaces/{workspace_gid}/tasks/search](https://raw.githubusercontent.com).
+For more complex task retrieval, use [workspaces/{workspace_gid}/tasks/search](https://developers.asana.com/reference/rest-api-reference).
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 

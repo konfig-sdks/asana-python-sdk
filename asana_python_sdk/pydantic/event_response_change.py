@@ -3,7 +3,7 @@
 """
     Asana
 
-    This is the interface for interacting with the [Asana Platform](https://developers.asana.com). Our API reference is generated from our [OpenAPI spec] (https://raw.githubusercontent.com/Asana/openapi/master/defs/asana_oas.yaml).
+    This is the interface for interacting with the [Asana Platform](https://developers.asana.com). Our API reference is generated from our [OpenAPI spec](https://raw.githubusercontent.com/Asana/openapi/master/defs/asana_oas.yaml).
 
     The version of the OpenAPI document: 1.0
     Created by: https://asana.com/support
@@ -23,13 +23,13 @@ class EventResponseChange(BaseModel):
     # The type of action taken on the **field** which has been changed.  This can be one of `changed`, `added`, or `removed` depending on the nature of the change.
     action: typing.Optional[str] = Field(None, alias='action')
 
-    # *Conditional.* This property is only present when the value of the event's `change.action` is `changed` _and_ the `new_value` is an Asana resource. This will be only the `gid` and `resource_type` of the resource when the events come from webhooks; this will be the compact representation (and can have fields expanded with [opt_fields](https://raw.githubusercontent.com)) when using the [get events](https://raw.githubusercontent.com) endpoint.
+    # *Conditional.* This property is only present when the value of the event's `change.action` is `changed` _and_ the `new_value` is an Asana resource. This will be only the `gid` and `resource_type` of the resource when the events come from webhooks; this will be the compact representation (and can have fields expanded with [opt_fields](https://developers.asana.com/reference/rest-api-reference)) when using the [get events](https://developers.asana.com/reference/rest-api-reference) endpoint.
     new_value: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(None, alias='new_value')
 
-    # *Conditional.* This property is only present when the value of the event's `change.action` is `added` _and_ the `added_value` is an Asana resource. This will be only the `gid` and `resource_type` of the resource when the events come from webhooks; this will be the compact representation (and can have fields expanded with [opt_fields](https://raw.githubusercontent.com)) when using the [get events](https://raw.githubusercontent.com) endpoint.
+    # *Conditional.* This property is only present when the value of the event's `change.action` is `added` _and_ the `added_value` is an Asana resource. This will be only the `gid` and `resource_type` of the resource when the events come from webhooks; this will be the compact representation (and can have fields expanded with [opt_fields](https://developers.asana.com/reference/rest-api-reference)) when using the [get events](https://developers.asana.com/reference/rest-api-reference) endpoint.
     added_value: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(None, alias='added_value')
 
-    # *Conditional.* This property is only present when the value of the event's `change.action` is `removed` _and_ the `removed_value` is an Asana resource. This will be only the `gid` and `resource_type` of the resource when the events come from webhooks; this will be the compact representation (and can have fields expanded with [opt_fields](https://raw.githubusercontent.com)) when using the [get events](https://raw.githubusercontent.com) endpoint.
+    # *Conditional.* This property is only present when the value of the event's `change.action` is `removed` _and_ the `removed_value` is an Asana resource. This will be only the `gid` and `resource_type` of the resource when the events come from webhooks; this will be the compact representation (and can have fields expanded with [opt_fields](https://developers.asana.com/reference/rest-api-reference)) when using the [get events](https://developers.asana.com/reference/rest-api-reference) endpoint.
     removed_value: typing.Optional[typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(None, alias='removed_value')
     class Config:
         arbitrary_types_allowed = True
